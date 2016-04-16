@@ -26,6 +26,7 @@
 		9EBD68F21CC2A1B600176300 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD68F11CC2A1B600176300 /* Media.m */; };
 		9EBD68F51CC2A29D00176300 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD68F41CC2A29D00176300 /* Comment.m */; };
 		9EBD68F81CC2A34C00176300 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD68F71CC2A34C00176300 /* DataSource.m */; };
+		9EBD68FB1CC2DACC00176300 /* MediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD68FA1CC2DACC00176300 /* MediaTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,8 @@
 		9EBD68F41CC2A29D00176300 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		9EBD68F61CC2A34C00176300 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
 		9EBD68F71CC2A34C00176300 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
+		9EBD68F91CC2DACC00176300 /* MediaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaTableViewCell.h; sourceTree = "<group>"; };
+		9EBD68FA1CC2DACC00176300 /* MediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,8 @@
 				9EBD68F41CC2A29D00176300 /* Comment.m */,
 				9EBD68F61CC2A34C00176300 /* DataSource.h */,
 				9EBD68F71CC2A34C00176300 /* DataSource.m */,
+				9EBD68F91CC2DACC00176300 /* MediaTableViewCell.h */,
+				9EBD68FA1CC2DACC00176300 /* MediaTableViewCell.m */,
 				9E28EDAC1CC15AE90082A2D7 /* Assets.xcassets */,
 				9E28EDAE1CC15AE90082A2D7 /* LaunchScreen.storyboard */,
 				9E28EDB11CC15AE90082A2D7 /* Info.plist */,
@@ -215,6 +220,7 @@
 			files = (
 				9EBD68EF1CC2A0FE00176300 /* User.m in Sources */,
 				9EBD68F51CC2A29D00176300 /* Comment.m in Sources */,
+				9EBD68FB1CC2DACC00176300 /* MediaTableViewCell.m in Sources */,
 				9EBD68F21CC2A1B600176300 /* Media.m in Sources */,
 				9E28EDA51CC15AE90082A2D7 /* AppDelegate.m in Sources */,
 				9EBD68F81CC2A34C00176300 /* DataSource.m in Sources */,
