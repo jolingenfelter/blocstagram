@@ -47,7 +47,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return [DataSource sharedInstance].mediaItems.count;
+    return [self items].count;
 }
 
 
@@ -93,6 +93,13 @@
     
     return (CGRectGetWidth(self.view.frame) / image.size.width) * image.size.height;
     
+}
+
+- (NSArray *)items {
+    
+    NSArray *items = [DataSource sharedInstance].mediaItems;
+    
+    return items;
 }
 
 /*
