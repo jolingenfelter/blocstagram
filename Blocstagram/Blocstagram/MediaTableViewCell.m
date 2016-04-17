@@ -141,6 +141,41 @@ static NSParagraphStyle *paragraphStyle;
     self.commentLabel.attributedText = [self commentString];
 }
 
++ (CGFloat) heightForMediaItem:(Media *)mediaItem width:(CGFloat)width {
+    
+    //Make a cell
+    
+    MediaTableViewCell *layoutCell = [[MediaTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"layoutCell"];
+    
+    // Set it to the given width, and the maximum possible height
+    
+    layoutCell.frame = CGRectMake(0, 0, width, CGFLOAT_MAX);
+    
+    // Give it the media item
+    
+    layoutCell.mediaItem = mediaItem;
+    
+    // Make it adjust the image view and labels
+    
+    [layoutCell layoutSubviews];
+    
+    // The height will be wherever the bottom of the comments label is
+    
+    return CGRectGetMaxY(layoutCell.commentLabel.frame);
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
