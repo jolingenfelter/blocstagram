@@ -65,7 +65,7 @@
     Media *item = [DataSource sharedInstance].mediaItems[indexPath.row];
     UIImage *image = item.image;
     
-    return 300 + (image.size.height / image.size.width *CGRectGetWidth(self.view,frame));
+    return 300 + (image.size.height / image.size.width *CGRectGetWidth(self.view.frame));
     
 }
 
