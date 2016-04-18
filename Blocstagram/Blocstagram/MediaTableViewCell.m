@@ -71,6 +71,7 @@ static NSParagraphStyle *paragraphStyle;
 - (NSAttributedString *) usernameAndCaptionString {
     //#1
     CGFloat usernameFontSize= 15;
+    CGFloat kerningSize = 3.30;
     
     //#2 - Make a string that says "username caption"
     NSString *baseString = [NSString stringWithFormat:@"%@ %@", self.mediaItem.user.userName, self.mediaItem.caption];
@@ -82,6 +83,9 @@ static NSParagraphStyle *paragraphStyle;
     NSRange usernameRange = [baseString rangeOfString: self.mediaItem.user.userName];
     [mutableUsernameAndCaptionString addAttribute:NSFontAttributeName value:[boldFont fontWithSize: usernameFontSize] range:usernameRange];
     
+    NSRange captionRange = [baseString rangeOfString:self.mediaItem.caption];
+    [mutableUsernameAndCaptionString addAttribute:NSKernAttributeName value:[NSNumber numberWithFloat:kerningSize] range:captionRange];
+    
     return mutableUsernameAndCaptionString;
 }
 
@@ -89,20 +93,44 @@ static NSParagraphStyle *paragraphStyle;
     NSMutableAttributedString *commentString = [[NSMutableAttributedString alloc] init];
     
     for (Comment *comment in self.mediaItem.comments) {
-        // Make a string that says "username comment" followed by a line break
+        
         NSString *baseString = [NSString stringWithFormat:@"%@ %@\n", comment.from.userName, comment.text];
-        
-        // Make an attributed string, with the "username" bold
-        
         NSMutableAttributedString *oneCommentString = [[NSMutableAttributedString alloc] initWithString:baseString attributes:@{NSFontAttributeName : lightFont, NSParagraphStyleAttributeName : paragraphStyle}];
+    
         
         NSRange usernameRange = [baseString rangeOfString:comment.from.userName];
+        NSRange commentRange = [baseString rangeOfString:comment.text];
+        NSRange baseStringRange = [baseString rangeOfString:baseString];
+        
+        
         [oneCommentString addAttribute:NSFontAttributeName value:boldFont range:usernameRange];
         [oneCommentString addAttribute:NSForegroundColorAttributeName value:linkColor range:usernameRange];
-        
+        [oneCommentString addAttribute:NSForegroundColorAttributeName value:linkColor range:commentRange];
         [commentString appendAttributedString:oneCommentString];
-    }
+        
+        /*
+        int commentIndex = 0;
+        for (int i = commentIndex; i <= self.mediaItem.comments.count; i++) {
+            if (commentIndex % 2 == 0) {
+                NSMutableParagraphStyle *paragraphRightAlign = [[NSMutableParagraphStyle alloc] init];
+                paragraphRightAlign.alignment = NSTextAlignmentRight;
+                [oneCommentString addAttribute:NSParagraphStyleAttributeName value:paragraphRightAlign range:commentRange];
+        
+            }
+            
+            
+        }
+         */
+            if ([self.mediaItem.comments objectAtIndex:0]) {
+                UIColor *commentStringOrange = [UIColor colorWithRed:1.0 green:0.627 blue:0.29 alpha:1.0];
+                [oneCommentString addAttribute:NSForegroundColorAttributeName value:commentStringOrange range:commentRange];
+                [commentString replaceCharactersInRange:baseStringRange withAttributedString:oneCommentString];
+                
+                
+            }
     
+    }
+
     return commentString;
 }
 
@@ -164,17 +192,6 @@ static NSParagraphStyle *paragraphStyle;
     return CGRectGetMaxY(layoutCell.commentLabel.frame);
     
 }
-
-
-
-
-
-
-
-
-
-
-
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
