@@ -91,8 +91,9 @@ static NSParagraphStyle *paragraphStyle;
 
 - (NSAttributedString *) commentString {
     NSMutableAttributedString *commentString = [[NSMutableAttributedString alloc] init];
+    NSMutableArray *mediaItemsCommentsArray = [self.mediaItem.comments mutableCopy];
     
-    for (Comment *comment in self.mediaItem.comments) {
+    for (Comment *comment in mediaItemsCommentsArray) {
         
         NSString *baseString = [NSString stringWithFormat:@"%@ %@\n", comment.from.userName, comment.text];
         NSMutableAttributedString *oneCommentString = [[NSMutableAttributedString alloc] initWithString:baseString attributes:@{NSFontAttributeName : lightFont, NSParagraphStyleAttributeName : paragraphStyle}];
@@ -100,7 +101,6 @@ static NSParagraphStyle *paragraphStyle;
         
         NSRange usernameRange = [baseString rangeOfString:comment.from.userName];
         NSRange commentRange = [baseString rangeOfString:comment.text];
-        NSRange baseStringRange = [baseString rangeOfString:baseString];
         
         
         [oneCommentString addAttribute:NSFontAttributeName value:boldFont range:usernameRange];
@@ -110,22 +110,23 @@ static NSParagraphStyle *paragraphStyle;
         
         /*
         int commentIndex = 0;
-        for (int i = commentIndex; i <= self.mediaItem.comments.count; i++) {
+        for (int i = commentIndex; i <= mediaItemsCommentsArray.count; i++) {
             if (commentIndex % 2 == 0) {
                 NSMutableParagraphStyle *paragraphRightAlign = [[NSMutableParagraphStyle alloc] init];
                 paragraphRightAlign.alignment = NSTextAlignmentRight;
                 [oneCommentString addAttribute:NSParagraphStyleAttributeName value:paragraphRightAlign range:commentRange];
+                [commentString appendAttributedString:oneCommentString];
         
             }
             
             
         }
          */
-            if ([self.mediaItem.comments objectAtIndex:0]) {
+        
+            if ([mediaItemsCommentsArray objectAtIndex:0]) {
                 UIColor *commentStringOrange = [UIColor colorWithRed:1.0 green:0.627 blue:0.29 alpha:1.0];
                 [oneCommentString addAttribute:NSForegroundColorAttributeName value:commentStringOrange range:commentRange];
-                [commentString replaceCharactersInRange:baseStringRange withAttributedString:oneCommentString];
-                
+                [commentString appendAttributedString:oneCommentString];
                 
             }
     
