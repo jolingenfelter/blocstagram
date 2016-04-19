@@ -126,6 +126,13 @@
     [mutableArrayWithKVO removeObject:item];
 }
 
+- (void) moveDeletedMediaItemToTop:(Media *)item {
+    NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
+    NSUInteger deletedItem = [mutableArrayWithKVO indexOfObject:item];
+    [mutableArrayWithKVO removeObjectAtIndex:deletedItem];
+    [mutableArrayWithKVO insertObject:item atIndex:0];
+}
+
 
 #pragma mark - Key/Value Observing
 

@@ -17,5 +17,6 @@
 @property (nonatomic, strong, readonly) NSArray *mediaItems;
 
 - (void) delteMediaItem:(Media *) item;
+- (void) moveDeletedMediaItemToTop:(Media *)item;
 
 @end
