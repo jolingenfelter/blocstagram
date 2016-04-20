@@ -92,7 +92,10 @@ static NSParagraphStyle *paragraphStyle;
 - (NSAttributedString *) commentString {
     NSMutableAttributedString *commentString = [[NSMutableAttributedString alloc] init];
     
-    for (Comment *comment in self.mediaItem.comments) {
+    
+    for (int i = 0; i < self.mediaItem.comments.count; i++) {
+        Comment *comment = self.mediaItem.comments[i];
+    
         
         NSString *baseString = [NSString stringWithFormat:@"%@ %@\n", comment.from.userName, comment.text];
         NSMutableAttributedString *oneCommentString = [[NSMutableAttributedString alloc] initWithString:baseString attributes:@{NSFontAttributeName : lightFont, NSParagraphStyleAttributeName : paragraphStyle}];
@@ -100,32 +103,35 @@ static NSParagraphStyle *paragraphStyle;
         
         NSRange usernameRange = [baseString rangeOfString:comment.from.userName];
         NSRange commentRange = [baseString rangeOfString:comment.text];
+    
         
         
         [oneCommentString addAttribute:NSFontAttributeName value:boldFont range:usernameRange];
         [oneCommentString addAttribute:NSForegroundColorAttributeName value:linkColor range:usernameRange];
         [oneCommentString addAttribute:NSForegroundColorAttributeName value:linkColor range:commentRange];
         [commentString appendAttributedString:oneCommentString];
-
+    
         
         
-        if ([self.mediaItem.comments objectAtIndex:0]) {
+        if (i == 0) {
             UIColor *commentStringOrange = [UIColor colorWithRed:1.0 green:0.627 blue:0.29 alpha:1.0];
+        
+            [oneCommentString setAttributes:@{NSForegroundColorAttributeName : commentStringOrange, NSParagraphStyleAttributeName : paragraphStyle, NSFontAttributeName : lightFont} range:commentRange];
+            [oneCommentString attributedSubstringFromRange:commentRange];
             
-            [commentString setAttributes:@{NSForegroundColorAttributeName : commentStringOrange, NSParagraphStyleAttributeName : paragraphStyle, NSFontAttributeName : lightFont} range:commentRange];
+            [commentString replaceCharactersInRange:commentRange withAttributedString:oneCommentString];
+            
+
+            
         }
         
-        int commentIndex = 0;
-        for (int i = commentIndex; i <= self.mediaItem.comments.count; i++) {
-            if (commentIndex % 2 == 0) {
-                NSMutableParagraphStyle *paragraphRightAlign = [[NSMutableParagraphStyle alloc] init];
-                paragraphRightAlign.alignment = NSTextAlignmentRight;
-                [commentString addAttribute:NSParagraphStyleAttributeName value: paragraphRightAlign range:commentRange];
-            }
+        if (i % 2 == 0) {
+            NSMutableParagraphStyle *paragraphRightAlign = [[NSMutableParagraphStyle alloc] init];
+            paragraphRightAlign.alignment = NSTextAlignmentRight;
+            [oneCommentString setAttributes:@{NSFontAttributeName : lightFont, NSParagraphStyleAttributeName : paragraphRightAlign} range:commentRange];
             
+    
         }
-    
-    
     }
     
     return commentString;
