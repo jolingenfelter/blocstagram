@@ -91,9 +91,8 @@ static NSParagraphStyle *paragraphStyle;
 
 - (NSAttributedString *) commentString {
     NSMutableAttributedString *commentString = [[NSMutableAttributedString alloc] init];
-    NSMutableArray *mediaItemsCommentsArray = [self.mediaItem.comments mutableCopy];
     
-    for (Comment *comment in mediaItemsCommentsArray) {
+    for (Comment *comment in self.mediaItem.comments) {
         
         NSString *baseString = [NSString stringWithFormat:@"%@ %@\n", comment.from.userName, comment.text];
         NSMutableAttributedString *oneCommentString = [[NSMutableAttributedString alloc] initWithString:baseString attributes:@{NSFontAttributeName : lightFont, NSParagraphStyleAttributeName : paragraphStyle}];
@@ -107,33 +106,32 @@ static NSParagraphStyle *paragraphStyle;
         [oneCommentString addAttribute:NSForegroundColorAttributeName value:linkColor range:usernameRange];
         [oneCommentString addAttribute:NSForegroundColorAttributeName value:linkColor range:commentRange];
         [commentString appendAttributedString:oneCommentString];
+
         
-        /*
+        
+        if ([self.mediaItem.comments objectAtIndex:0]) {
+            UIColor *commentStringOrange = [UIColor colorWithRed:1.0 green:0.627 blue:0.29 alpha:1.0];
+            
+            [commentString setAttributes:@{NSForegroundColorAttributeName : commentStringOrange, NSParagraphStyleAttributeName : paragraphStyle, NSFontAttributeName : lightFont} range:commentRange];
+        }
+        
         int commentIndex = 0;
-        for (int i = commentIndex; i <= mediaItemsCommentsArray.count; i++) {
+        for (int i = commentIndex; i <= self.mediaItem.comments.count; i++) {
             if (commentIndex % 2 == 0) {
                 NSMutableParagraphStyle *paragraphRightAlign = [[NSMutableParagraphStyle alloc] init];
                 paragraphRightAlign.alignment = NSTextAlignmentRight;
-                [oneCommentString addAttribute:NSParagraphStyleAttributeName value:paragraphRightAlign range:commentRange];
-                [commentString appendAttributedString:oneCommentString];
-        
+                [commentString addAttribute:NSParagraphStyleAttributeName value: paragraphRightAlign range:commentRange];
             }
-            
             
         }
-         */
-        
-            if ([mediaItemsCommentsArray objectAtIndex:0]) {
-                UIColor *commentStringOrange = [UIColor colorWithRed:1.0 green:0.627 blue:0.29 alpha:1.0];
-                [oneCommentString addAttribute:NSForegroundColorAttributeName value:commentStringOrange range:commentRange];
-                [commentString appendAttributedString:oneCommentString];
-                
-            }
+    
     
     }
-
+    
     return commentString;
+    
 }
+
 
 - (CGSize) sizeOfString:(NSAttributedString *)string {
     CGSize maxSize = CGSizeMake(CGRectGetWidth(self.contentView.bounds) - 40, 0.0);
