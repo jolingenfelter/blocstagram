@@ -103,22 +103,31 @@ static NSParagraphStyle *paragraphStyle;
         
         NSRange usernameRange = [baseString rangeOfString:comment.from.userName];
         NSRange commentRange = [baseString rangeOfString:comment.text];
+        NSRange baseRange = [baseString rangeOfString:baseString];
     
         [oneCommentString addAttribute:NSFontAttributeName value:boldFont range:usernameRange];
-        [oneCommentString addAttribute:NSForegroundColorAttributeName value:linkColor range:usernameRange];
-        [oneCommentString addAttribute:NSForegroundColorAttributeName value:linkColor range:commentRange];
         
         if (i == 0) {
             UIColor *commentStringOrange = [UIColor colorWithRed:1.0 green:0.627 blue:0.29 alpha:1.0];
-            [oneCommentString setAttributes:@{NSForegroundColorAttributeName : commentStringOrange, NSParagraphStyleAttributeName : paragraphStyle, NSFontAttributeName : lightFont} range:commentRange];
+            [oneCommentString addAttribute:NSForegroundColorAttributeName value:commentStringOrange range:commentRange];
+            [oneCommentString addAttribute:NSForegroundColorAttributeName value:commentStringOrange range:usernameRange];
+        
+        } else {
+
+            [oneCommentString addAttribute:NSForegroundColorAttributeName value:linkColor range:usernameRange];
+            [oneCommentString addAttribute:NSForegroundColorAttributeName value:linkColor range:commentRange];
         }
         
         if (i % 2 == 0) {
             NSMutableParagraphStyle *paragraphRightAlign = [[NSMutableParagraphStyle alloc] init];
             paragraphRightAlign.alignment = NSTextAlignmentRight;
-            [oneCommentString setAttributes:@{NSFontAttributeName : lightFont, NSParagraphStyleAttributeName : paragraphRightAlign, NSForegroundColorAttributeName : linkColor} range:commentRange];
+            [oneCommentString addAttribute: NSParagraphStyleAttributeName value:paragraphRightAlign range:baseRange];
             
     
+        } else {
+            
+            [oneCommentString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:baseRange];
+            
         }
         
         [commentString appendAttributedString:oneCommentString];
