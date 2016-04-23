@@ -27,6 +27,7 @@
 		9EBD68F51CC2A29D00176300 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD68F41CC2A29D00176300 /* Comment.m */; };
 		9EBD68F81CC2A34C00176300 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD68F71CC2A34C00176300 /* DataSource.m */; };
 		9EBD68FB1CC2DACC00176300 /* MediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD68FA1CC2DACC00176300 /* MediaTableViewCell.m */; };
+		9EC0D5401CCA7CE800EADF9B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0D53F1CCA7CE800EADF9B /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,8 @@
 		9EBD68F71CC2A34C00176300 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		9EBD68F91CC2DACC00176300 /* MediaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaTableViewCell.h; sourceTree = "<group>"; };
 		9EBD68FA1CC2DACC00176300 /* MediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTableViewCell.m; sourceTree = "<group>"; };
+		9EC0D53E1CCA7CE800EADF9B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		9EC0D53F1CCA7CE800EADF9B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,8 @@
 				9EBD68F71CC2A34C00176300 /* DataSource.m */,
 				9EBD68F91CC2DACC00176300 /* MediaTableViewCell.h */,
 				9EBD68FA1CC2DACC00176300 /* MediaTableViewCell.m */,
+				9EC0D53E1CCA7CE800EADF9B /* LoginViewController.h */,
+				9EC0D53F1CCA7CE800EADF9B /* LoginViewController.m */,
 				9E28EDAC1CC15AE90082A2D7 /* Assets.xcassets */,
 				9E28EDAE1CC15AE90082A2D7 /* LaunchScreen.storyboard */,
 				9E28EDB11CC15AE90082A2D7 /* Info.plist */,
@@ -223,6 +228,7 @@
 				9EBD68FB1CC2DACC00176300 /* MediaTableViewCell.m in Sources */,
 				9EBD68F21CC2A1B600176300 /* Media.m in Sources */,
 				9E28EDA51CC15AE90082A2D7 /* AppDelegate.m in Sources */,
+				9EC0D5401CCA7CE800EADF9B /* LoginViewController.m in Sources */,
 				9EBD68F81CC2A34C00176300 /* DataSource.m in Sources */,
 				9E28EDA21CC15AE90082A2D7 /* main.m in Sources */,
 				9E28EDE31CC15C170082A2D7 /* ImagesTableViewController.m in Sources */,
@@ -330,6 +336,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Blocstagram/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Bloc.Blocstagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -341,6 +348,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Blocstagram/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Bloc.Blocstagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";

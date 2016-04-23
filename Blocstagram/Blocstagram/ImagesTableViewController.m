@@ -139,7 +139,7 @@
         
         Media *item = [DataSource sharedInstance].mediaItems[indexPath.row];
         
-        [[DataSource sharedInstance] delteMediaItem:item];
+        [[DataSource sharedInstance] deleteMediaItem:item];
     }
     
 }
