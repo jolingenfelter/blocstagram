@@ -50,7 +50,7 @@
 
 + (NSString *) instagramClientID {
     
-    return @"<#51b2d64d82084c58834555cbd2503052#>";
+    return @"51b2d64d82084c58834555cbd2503052";
     
 }
 
