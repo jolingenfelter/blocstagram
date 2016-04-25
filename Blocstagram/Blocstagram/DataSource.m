@@ -23,6 +23,8 @@
 @property (nonatomic, assign) BOOL isRefreshing;
 @property (nonatomic, assign) BOOL isLoadingOlderItems;
 
+@property (nonatomic, assign) BOOL thereAreNoMoreOlderMessages;
+
 @end
 
 
@@ -61,7 +63,7 @@
     [[NSNotificationCenter defaultCenter] addObserverForName:LoginViewControllerDidGetAccessTokenNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
         self.accessToken = note.object;
         
-        [self populateDataWithParameters:nil];
+        
     }];
 }
 
@@ -107,20 +109,31 @@
 
 - (void) requestNewItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler {
     
-   
+    self.thereAreNoMoreOlderMessages = NO;
+    
     if (self.isRefreshing == NO) {
         self.isRefreshing = YES;
     
     
-   // TODO: Add images
-   
+        NSString *minID = [[self.mediaItems firstObject] idNumber];
+        NSDictionary *parameters;
     
-        self.isRefreshing = NO;
-    
-        if (completionHandler) {
-            completionHandler(nil);
-        
+        if (minID) {
+            
+            parameters = @{@"min_id": minID};
+            
         }
+        
+        [self populateDataWithParameters:parameters completionHandler:^(NSError *error) {
+            
+            self.isRefreshing = NO;
+            
+            if (completionHandler) {
+                
+                completionHandler(error);
+            }
+            
+        }];
         
     }
     
@@ -128,18 +141,28 @@
 
 - (void) requestOldItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler {
     
-    if (self.isLoadingOlderItems == NO) {
+    if (self.isLoadingOlderItems == NO && self.thereAreNoMoreOlderMessages == NO) {
         
         self.isLoadingOlderItems = YES;
         
+        NSString *maxID = [[self.mediaItems lastObject] idNumber];
+        NSDictionary *parameters;
         
         
-        // TODO: Add images
+        if (maxID) {
+            
+            parameters = @{@"max_id": maxID};
+        }
+        
+        [self populateDataWithParameters:parameters completionHandler:^(NSError *error) {
+            
             self.isLoadingOlderItems = NO;
-        
+            
             if (completionHandler) {
-                completionHandler(nil);
+                completionHandler(error);
             }
+            
+        }];
     
     }
 }
@@ -151,7 +174,7 @@
     
 }
 
-- (void) populateDataWithParameters:(NSDictionary *)parameters {
+- (void) populateDataWithParameters:(NSDictionary *)parameters completionHandler:(NewItemCompletionBlock)completionHandler {
     
     if (self.accessToken) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),^ {
@@ -183,8 +206,32 @@
                         dispatch_async(dispatch_get_main_queue(),^{
                             
                            [self parseDataFromFeedDictionary:feedDictionary fromRequestWithParameters:parameters];
+                            
+                            if (completionHandler) {
+                                
+                                completionHandler(nil);
+                                
+                            }
                         });
+                        
+                    } else if (completionHandler) {
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            completionHandler(jsonError);
+                        
+                        });
+                        
                     }
+                    
+                } else if (completionHandler) {
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                       
+                        completionHandler(webError);
+                        
+                    });
+                    
                 }
             }
         });
@@ -211,9 +258,33 @@
         }
     }
     
-    [self willChangeValueForKey:@"mediaItems"];
-    self.mediaItems = tmpMediaItems;
-    [self didChangeValueForKey:@"mediaItems"];
+    NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
+    
+    if (parameters[@"min_id"]) {
+        NSRange rangeOfIndexes = NSMakeRange(0, tmpMediaItems.count);
+        NSIndexSet *indexSetOfNewObjects = [NSIndexSet indexSetWithIndexesInRange:rangeOfIndexes];
+        
+        [mutableArrayWithKVO insertObjects:tmpMediaItems atIndexes:indexSetOfNewObjects];
+        
+    } else if (parameters[@"max_id"]) {
+        
+        if (tmpMediaItems.count == 0) {
+            
+            self.thereAreNoMoreOlderMessages = YES;
+            
+        } else {
+            
+            [mutableArrayWithKVO addObjectsFromArray:tmpMediaItems];
+            
+        }
+        
+    } else {
+        
+        [self willChangeValueForKey:@"mediaItems"];
+        self.mediaItems = tmpMediaItems;
+        [self didChangeValueForKey:@"mediaItems"];
+        
+    }
     
 }
 
