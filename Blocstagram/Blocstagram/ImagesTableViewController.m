@@ -78,6 +78,18 @@
     
 }
 
+- (CGFloat) tableView:(UITableView *)tableView estimateHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    Media *item = [DataSource sharedInstance].mediaItems[indexPath.row];
+    
+    if (item.image) {
+        return 350;
+    } else {
+        return 150;
+    }
+    
+}
+
 #pragma mark Key-Value Observing
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {

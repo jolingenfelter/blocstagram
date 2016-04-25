@@ -48,6 +48,8 @@
     return self;
 }
 
+# pragma mark - Access Token
+
 + (NSString *) instagramClientID {
     
     return @"51b2d64d82084c58834555cbd2503052";
@@ -190,9 +192,69 @@
     
 }
 
+# pragma mark - Parsing Data
 
 - (void) parseDataFromFeedDictionary:(NSDictionary *)feedDictionary fromRequestWithParameters:(NSDictionary *)parameters {
-    NSLog(@"%@", feedDictionary);
+    
+    NSArray *mediaArray = feedDictionary[@"data"];
+    
+    NSMutableArray *tmpMediaItems = [NSMutableArray array];
+    
+    for (NSDictionary *mediaDictionary in mediaArray) {
+        
+        Media *mediaItem = [[Media alloc] initWithDictionary:mediaDictionary];
+        
+        if (mediaItem) {
+            [tmpMediaItems addObject:mediaItem];
+            
+            [self downloadImageForMediaItem:mediaItem];
+        }
+    }
+    
+    [self willChangeValueForKey:@"mediaItems"];
+    self.mediaItems = tmpMediaItems;
+    [self didChangeValueForKey:@"mediaItems"];
+    
+}
+
+# pragma mark - Downloading Images
+
+- (void) downloadImageForMediaItem:(Media *)mediaItem {
+    
+    if (mediaItem.mediaURL && !mediaItem.image) {
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            NSURLRequest *request = [NSURLRequest requestWithURL:mediaItem.mediaURL];
+            
+            NSURLResponse *response;
+            NSError *error;
+            NSData *imageData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+            
+            if (imageData) {
+                
+                UIImage *image = [UIImage imageWithData:imageData];
+                
+                if (image) {
+                    
+                    mediaItem.image = image;
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
+                        NSUInteger index = [mutableArrayWithKVO indexOfObject:mediaItem];
+                        [mutableArrayWithKVO replaceObjectAtIndex:index withObject:mediaItem];
+                        
+                    });
+                }
+                
+            } else {
+                
+                NSLog(@"Error downloading image: %@", error);
+                
+            }
+        });
+    }
 }
 
 
