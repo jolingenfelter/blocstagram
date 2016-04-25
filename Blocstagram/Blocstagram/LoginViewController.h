@@ -11,5 +11,6 @@
 @interface LoginViewController : UIViewController
 
 extern NSString *const LoginViewControllerDidGetAccessTokenNotification;
+- (IBAction)backButtonPressed:(UIBarButtonItem *) backButton;
 
 @end
