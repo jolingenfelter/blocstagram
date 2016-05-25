@@ -23,6 +23,7 @@
 		9E28EDDF1CC15BD60082A2D7 /* 9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E28EDD51CC15BD60082A2D7 /* 9.jpg */; };
 		9E28EDE01CC15BD60082A2D7 /* 10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E28EDD61CC15BD60082A2D7 /* 10.jpg */; };
 		9E28EDE31CC15C170082A2D7 /* ImagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E28EDE21CC15C170082A2D7 /* ImagesTableViewController.m */; };
+		9E77228D1CF5F6D600075B42 /* MediaFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E77228C1CF5F6D600075B42 /* MediaFullScreenViewController.m */; };
 		9EBD68EF1CC2A0FE00176300 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD68EE1CC2A0FE00176300 /* User.m */; };
 		9EBD68F21CC2A1B600176300 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD68F11CC2A1B600176300 /* Media.m */; };
 		9EBD68F51CC2A29D00176300 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD68F41CC2A29D00176300 /* Comment.m */; };
@@ -52,6 +53,8 @@
 		9E28EDD61CC15BD60082A2D7 /* 10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpg; sourceTree = "<group>"; };
 		9E28EDE11CC15C170082A2D7 /* ImagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesTableViewController.h; sourceTree = "<group>"; };
 		9E28EDE21CC15C170082A2D7 /* ImagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableViewController.m; sourceTree = "<group>"; };
+		9E77228B1CF5F6D600075B42 /* MediaFullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFullScreenViewController.h; sourceTree = "<group>"; };
+		9E77228C1CF5F6D600075B42 /* MediaFullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFullScreenViewController.m; sourceTree = "<group>"; };
 		9EBD68ED1CC2A0FE00176300 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		9EBD68EE1CC2A0FE00176300 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		9EBD68F01CC2A1B600176300 /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
@@ -114,6 +117,12 @@
 				9E28EDA41CC15AE90082A2D7 /* AppDelegate.m */,
 				9E28EDE11CC15C170082A2D7 /* ImagesTableViewController.h */,
 				9E28EDE21CC15C170082A2D7 /* ImagesTableViewController.m */,
+				9EBD68F91CC2DACC00176300 /* MediaTableViewCell.h */,
+				9EBD68FA1CC2DACC00176300 /* MediaTableViewCell.m */,
+				9EC0D53E1CCA7CE800EADF9B /* LoginViewController.h */,
+				9EC0D53F1CCA7CE800EADF9B /* LoginViewController.m */,
+				9E77228B1CF5F6D600075B42 /* MediaFullScreenViewController.h */,
+				9E77228C1CF5F6D600075B42 /* MediaFullScreenViewController.m */,
 				9EBD68ED1CC2A0FE00176300 /* User.h */,
 				9EBD68EE1CC2A0FE00176300 /* User.m */,
 				9EBD68F01CC2A1B600176300 /* Media.h */,
@@ -122,10 +131,6 @@
 				9EBD68F41CC2A29D00176300 /* Comment.m */,
 				9EBD68F61CC2A34C00176300 /* DataSource.h */,
 				9EBD68F71CC2A34C00176300 /* DataSource.m */,
-				9EBD68F91CC2DACC00176300 /* MediaTableViewCell.h */,
-				9EBD68FA1CC2DACC00176300 /* MediaTableViewCell.m */,
-				9EC0D53E1CCA7CE800EADF9B /* LoginViewController.h */,
-				9EC0D53F1CCA7CE800EADF9B /* LoginViewController.m */,
 				9E28EDAC1CC15AE90082A2D7 /* Assets.xcassets */,
 				9E28EDAE1CC15AE90082A2D7 /* LaunchScreen.storyboard */,
 				9E28EDB11CC15AE90082A2D7 /* Info.plist */,
@@ -298,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E77228D1CF5F6D600075B42 /* MediaFullScreenViewController.m in Sources */,
 				9EBD68EF1CC2A0FE00176300 /* User.m in Sources */,
 				9EBD68F51CC2A29D00176300 /* Comment.m in Sources */,
 				9EBD68FB1CC2DACC00176300 /* MediaTableViewCell.m in Sources */,
