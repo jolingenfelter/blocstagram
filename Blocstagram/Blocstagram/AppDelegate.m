@@ -43,6 +43,7 @@
     self.window.rootViewController = navVC;
     [self.window makeKeyAndVisible];
     
+    [[DataSource sharedInstance] requestNewItemsWithCompletionHandler:nil];
     
     return YES;
 }
@@ -62,7 +63,7 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [[DataSource sharedInstance] requestNewItemsWithCompletionHandler:nil];
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
