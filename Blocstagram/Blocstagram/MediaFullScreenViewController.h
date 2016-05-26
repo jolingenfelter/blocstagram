@@ -18,5 +18,6 @@
 - (instancetype) initWithMedia: (Media *)media;
 
 - (void) centerScrollView;
+- (void) shareItem;
 
 @end
