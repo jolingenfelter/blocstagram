@@ -55,7 +55,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - TableView DataSource
+#pragma mark - TableView
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
@@ -70,6 +70,13 @@
     cell.mediaItem = [DataSource sharedInstance].mediaItems[indexPath.row];
     
     return cell;
+}
+
+- (void) tableView:(UITableView *)tableView willDisplayCell:(nonnull UITableViewCell *)cell forRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    Media *mediaItem = [DataSource sharedInstance].mediaItems[indexPath.row];
+    if (mediaItem.downloadState == MediaDownloadStateNeedsImage) {
+        [[DataSource sharedInstance] downloadImageForMediaItem:mediaItem];
+    }
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
