@@ -117,9 +117,9 @@
 - (id) initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.strokeThickness = 1;
-        self.radius = 12;
-        self.strokeColor = [UIColor purpleColor];
+        self.strokeThickness = 1.5;
+        self.radius = 20;
+        self.strokeColor = [UIColor greenColor];
     }
     
     return self;

@@ -31,6 +31,8 @@ typedef NS_ENUM(NSUInteger, MediaDownloadState) {
 
 @property (nonatomic, assign) LikeState likeState;
 
+@property (nonatomic, assign) NSInteger likeCount;
+
 - (instancetype) initWithDictionary:(NSDictionary *)mediaDictionary;
 
 @end
