@@ -17,7 +17,7 @@
     if (self) {
         
         self.idNumber = userDictionary[@"id"];
-        self.userName = userDictionary[@"username"];
+        
         self.fullName = userDictionary[@"full_name"];
         
         NSString *profileURLString = userDictionary[@"profile_picture"];
@@ -26,6 +26,14 @@
         if (profileURL) {
             self.profilePictureURL = profileURL;
         }
+        
+        if (userDictionary[@"username"] != nil) {
+            self.userName = userDictionary[@"username"];
+        } else {
+            self.userName = @"unkown_user";
+        }
+        
+    
     }
     
     return self;
