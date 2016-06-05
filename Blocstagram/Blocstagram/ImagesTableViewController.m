@@ -197,6 +197,15 @@
     [self infiniteScrollIfNecessary];
 }
 
+- (void) scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+        NSArray *visibleIndexPaths = [self.tableView indexPathsForVisibleRows];
+        
+        for (NSIndexPath *indexpath in visibleIndexPaths) {
+            Media *item = [DataSource sharedInstance].mediaItems[indexpath.row];
+            [[DataSource sharedInstance] downloadImageForMediaItem:item];
+    }
+}
+
 # pragma mark - MediaTableViewCellDelegate
 
 - (void) cell:(MediaTableViewCell *)cell didTapImageView:(UIImageView *)imageView {
