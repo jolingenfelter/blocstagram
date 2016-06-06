@@ -125,6 +125,22 @@
     return cell;
 }
 
+- (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    PHAsset *asset = self.result[indexPath.row];
+    
+    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+    options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+    options.synchronous = YES;
+    
+    [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage *resultImage, NSDictionary *info)
+     {
+         CropImageViewController *cropVC = [[CropImageViewController alloc] initWithImage:resultImage];
+         cropVC.delegate = self;
+         [self.navigationController pushViewController:cropVC animated:YES];
+     }];
+    
+}
+
 #pragma mark - CropImageViewControllerDelegate
 
 - (void) cropControllerFinishedWithImage:(UIImage *)croppedImage {
