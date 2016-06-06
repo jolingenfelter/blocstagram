@@ -93,6 +93,7 @@
     for (int i=0; i < 4; i++) {
         UIView *view = [UIView new];
         view.backgroundColor = [UIColor whiteColor];
+        [array addObject:view];
     }
     
     return array;
