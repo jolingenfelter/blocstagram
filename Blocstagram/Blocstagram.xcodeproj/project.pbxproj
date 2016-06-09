@@ -39,6 +39,7 @@
 		9EE4FF391D070E5A008F25B0 /* PostToInstagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE4FF381D070E5A008F25B0 /* PostToInstagramViewController.m */; };
 		9EE953761CFFBAB9009F059B /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE953751CFFBAB9009F059B /* CameraViewController.m */; };
 		9EEBB4D01CFF55EC0005DE19 /* CameraToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EEBB4CF1CFF55EC0005DE19 /* CameraToolbar.m */; };
+		9EF0C5471D079F300078AF7E /* FilterViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0C5461D079F300078AF7E /* FilterViewCell.m */; };
 		9EF28E721D00F49100495690 /* UIImage+ImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF28E711D00F49100495690 /* UIImage+ImageUtilities.m */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +97,8 @@
 		9EE953771CFFBBBF009F059B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9EEBB4CE1CFF55EC0005DE19 /* CameraToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraToolbar.h; sourceTree = "<group>"; };
 		9EEBB4CF1CFF55EC0005DE19 /* CameraToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraToolbar.m; sourceTree = "<group>"; };
+		9EF0C5451D079F300078AF7E /* FilterViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewCell.h; sourceTree = "<group>"; };
+		9EF0C5461D079F300078AF7E /* FilterViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewCell.m; sourceTree = "<group>"; };
 		9EF28E701D00F49100495690 /* UIImage+ImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageUtilities.h"; sourceTree = "<group>"; };
 		9EF28E711D00F49100495690 /* UIImage+ImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageUtilities.m"; sourceTree = "<group>"; };
 		A6F0228DBE4A69BFE7A270C0 /* libPods-Blocstagram.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Blocstagram.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +186,8 @@
 				9E3192911D04DBED0080795F /* ImageLibraryViewController.m */,
 				9EE4FF371D070E5A008F25B0 /* PostToInstagramViewController.h */,
 				9EE4FF381D070E5A008F25B0 /* PostToInstagramViewController.m */,
+				9EF0C5451D079F300078AF7E /* FilterViewCell.h */,
+				9EF0C5461D079F300078AF7E /* FilterViewCell.m */,
 				9E28EDAC1CC15AE90082A2D7 /* Assets.xcassets */,
 				9E28EDAE1CC15AE90082A2D7 /* LaunchScreen.storyboard */,
 				9E28EDB11CC15AE90082A2D7 /* Info.plist */,
@@ -369,6 +374,7 @@
 				9EEBB4D01CFF55EC0005DE19 /* CameraToolbar.m in Sources */,
 				9E28EDA51CC15AE90082A2D7 /* AppDelegate.m in Sources */,
 				9EE4FF391D070E5A008F25B0 /* PostToInstagramViewController.m in Sources */,
+				9EF0C5471D079F300078AF7E /* FilterViewCell.m in Sources */,
 				9EC0D5401CCA7CE800EADF9B /* LoginViewController.m in Sources */,
 				9E5E47391CFBB2290054FA74 /* LikeButton.m in Sources */,
 				9EBD68F81CC2A34C00176300 /* DataSource.m in Sources */,
