@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (nonatomic, strong) UITapGestureRecognizer *doubleTap;
+@property (nonatomic, strong) UITapGestureRecognizer *tapOutside;
 
 @end
 
@@ -50,6 +51,7 @@
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFired:)];
     self.doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapFired:)];
     self.doubleTap.numberOfTapsRequired = 2;
+    self.tapOutside = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOutsideFired:)];
     
     [self.tap requireGestureRecognizerToFail:self.doubleTap];
     
@@ -142,7 +144,15 @@
     }
 }
 
-
+- (void) tapOutsideFired:(UIGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        CGPoint tapLocation = [sender locationInView:self.presentingViewController.view];
+        
+        if (![self.view pointInside:[self.view convertPoint:tapLocation toView:self.view.window.rootViewController.view] withEvent:nil]) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }
+}
 
 
 
