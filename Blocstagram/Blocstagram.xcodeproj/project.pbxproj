@@ -31,6 +31,7 @@
 		9E5E47391CFBB2290054FA74 /* LikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5E47381CFBB2290054FA74 /* LikeButton.m */; };
 		9E77228D1CF5F6D600075B42 /* MediaFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E77228C1CF5F6D600075B42 /* MediaFullScreenViewController.m */; };
 		9E848E3C1D0C800E00294255 /* BlocstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E848E3B1D0C800E00294255 /* BlocstagramTests.m */; };
+		9E848E441D0C878300294255 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E848E431D0C878300294255 /* UserTests.m */; };
 		9EBD68EF1CC2A0FE00176300 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD68EE1CC2A0FE00176300 /* User.m */; };
 		9EBD68F21CC2A1B600176300 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD68F11CC2A1B600176300 /* Media.m */; };
 		9EBD68F51CC2A29D00176300 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD68F41CC2A29D00176300 /* Comment.m */; };
@@ -91,6 +92,7 @@
 		9E848E391D0C800D00294255 /* BlocstagramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlocstagramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E848E3B1D0C800E00294255 /* BlocstagramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlocstagramTests.m; sourceTree = "<group>"; };
 		9E848E3D1D0C800E00294255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E848E431D0C878300294255 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
 		9EBD68ED1CC2A0FE00176300 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		9EBD68EE1CC2A0FE00176300 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		9EBD68F01CC2A1B600176300 /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			children = (
 				9E848E3B1D0C800E00294255 /* BlocstagramTests.m */,
 				9E848E3D1D0C800E00294255 /* Info.plist */,
+				9E848E431D0C878300294255 /* UserTests.m */,
 			);
 			path = BlocstagramTests;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E848E441D0C878300294255 /* UserTests.m in Sources */,
 				9E848E3C1D0C800E00294255 /* BlocstagramTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,6 +639,7 @@
 				9E848E411D0C800E00294255 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
