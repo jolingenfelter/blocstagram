@@ -43,12 +43,13 @@
     
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Crop", @"Crop command") style:UIBarButtonItemStyleDone target:self action:@selector(cropPressed:)];
     
-    self.navigationItem.title = NSLocalizedString(@"Crop Image", nil);
+    self.navigationItem.title = NSLocalizedString(@"Crop Image", nil]);
     self.navigationItem.rightBarButtonItem = rightButton;
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.view.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1];
+
 }
 
 - (void) viewWillLayoutSubviews {

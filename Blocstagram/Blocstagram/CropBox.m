@@ -40,8 +40,8 @@
         for (UIView *view in views) {
             [self addSubview: view];
         }
-
-
+        
+        
         
     }
     return self;
@@ -85,7 +85,7 @@
     CGFloat yOriginOfBottomView = CGRectGetMaxY(self.topView.frame) + width;
     CGFloat heightOfBottomView = CGRectGetHeight(self.frame) - yOriginOfBottomView;
     self.bottomView.frame = CGRectMake(0, yOriginOfBottomView, width, heightOfBottomView);
-
+    
     
     CGFloat thirdOfWidth = width / 3;
     
