@@ -16,22 +16,29 @@
 @property (nonatomic, strong) CropBox *cropBox;
 @property (nonatomic, assign) BOOL hasLoadedOnce;
 
+@property (nonatomic, strong) UIToolbar *topView;
+@property (nonatomic, strong) UIToolbar *bottomView;
+
 @end
 
 @implementation CropImageViewController
 
 - (instancetype) initWithImage:(UIImage *)sourceImage {
     self = [super init];
+
     
     if (self) {
+        self.topView = [UIToolbar new];
+        self.bottomView = [UIToolbar new];
         self.media = [[Media alloc] init];
         self.media.image = sourceImage;
         
         self.cropBox = [CropBox new];
+        
     }
     
-    return self;
     
+    return self;
 }
 
 - (void) viewDidLoad {
@@ -39,21 +46,36 @@
     
     self.view.clipsToBounds = YES;
     
-    [self.view addSubview:self.cropBox];
+    [self addViews];
     
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Crop", @"Crop command") style:UIBarButtonItemStyleDone target:self action:@selector(cropPressed:)];
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Crop", @"Crop Command") style:UIBarButtonItemStyleDone target:self action:@selector(cropPressed:)];
     
-    self.navigationItem.title = NSLocalizedString(@"Crop Image", nil]);
+    self.navigationItem.title = NSLocalizedString(@"Crop Image", nil);
     self.navigationItem.rightBarButtonItem = rightButton;
-    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.view.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1];
 
 }
 
-- (void) viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
+- (void) addViews {
+    
+    self.cropBox = [CropBox new];
+    
+    UIColor *whiteBG   = [UIColor colorWithWhite:1.0 alpha:.15];
+    self.topView.barTintColor = whiteBG;
+    self.bottomView.barTintColor = whiteBG;
+    self.topView.alpha = 0.5;
+    self.bottomView.alpha = 0.5;
+    
+    [self.view addSubview: self.topView];
+    [self.view addSubview:self.bottomView];
+    [self.view addSubview:self.cropBox];
+
+}
+
+- (void) viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
     
     CGRect cropRect = CGRectZero;
     
@@ -63,11 +85,19 @@
     CGSize size = self.view.frame.size;
     
     self.cropBox.frame = cropRect;
-    self.cropBox.center = CGPointMake(size.width / 2, size.height / 2);
+    self.cropBox.center = CGPointMake(size.width/2, size.height/2);
     self.scrollView.frame = self.cropBox.frame;
     self.scrollView.clipsToBounds = NO;
     
     [self recalculateZoomScale];
+    
+    CGFloat width = CGRectGetWidth(self.view.bounds);
+    self.topView.frame = CGRectMake(0, self.topLayoutGuide.length, width, 60);
+
+    CGFloat yOriginOfBottomView = CGRectGetMaxY(self.topView.frame) + width;
+    CGFloat heightOfBottomView  = CGRectGetHeight(self.view.frame) - yOriginOfBottomView;
+    self.bottomView.frame = CGRectMake(0, yOriginOfBottomView, width, heightOfBottomView);
+
     
     if (self.hasLoadedOnce == NO) {
         self.scrollView.zoomScale = self.scrollView.minimumZoomScale;
@@ -80,8 +110,8 @@
     float scale = 1.0f / self.scrollView.zoomScale / self.media.image.scale;
     visibleRect.origin.x = self.scrollView.contentOffset.x * scale;
     visibleRect.origin.y = self.scrollView.contentOffset.y * scale;
-    visibleRect.size.width = self.scrollView.bounds.size.width *scale;
-    visibleRect.size.height = self.scrollView.bounds.size.height *scale;
+    visibleRect.size.width = self.scrollView.bounds.size.width * scale;
+    visibleRect.size.height = self.scrollView.bounds.size.height * scale;
     
     UIImage *scrollViewCrop = [self.media.image imageWithFixedOrientation];
     scrollViewCrop = [scrollViewCrop imageCroppedToRect:visibleRect];
