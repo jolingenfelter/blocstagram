@@ -38,33 +38,45 @@
     [super tearDown];
 }
 
-- (void) testHeightOfMediaItem {
-    
 
-    MediaTableViewCell *testCell1 = [[MediaTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    MediaTableViewCell *testCell2 = [[MediaTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+-(void) testMinimumAndMaximumHeightOfCell {
     
-    UIImage *testImage1 = [UIImage imageNamed: @"4.jpg"];
-    UIImage *testImage2 = [UIImage imageNamed:@"10.jpg"];
+    MediaTableViewCell *testCell = [[MediaTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"testCell"];
     
-    Media *testMedia1 = [[Media alloc] initWithDictionary:self.sourceDictionary];
-    testMedia1.image = testImage1;
-    Media *testMedia2 = [[Media alloc] initWithDictionary:self.sourceDictionary];
-    testMedia2.image = testImage2;
+    Media *testMedia = [[Media alloc] initWithDictionary:self.sourceDictionary];
+    testMedia.image = [UIImage imageNamed:@"4.jpg"];
     
-    [testCell1 setMediaItem:testMedia1];
-    [testCell2 setMediaItem:testMedia2];
+    [testCell setMediaItem:testMedia];
     
-    CGFloat width = 423;
-    CGFloat imageHeight1 = [MediaTableViewCell heightForMediaItem:testMedia1 width:width traitCollection:testCell1.traitCollection];
-    CGFloat imageHeight2 = [MediaTableViewCell heightForMediaItem:testMedia2 width:width traitCollection:testCell2.traitCollection];
+    CGFloat testCellHeight = [MediaTableViewCell heightForMediaItem:testMedia width:320 traitCollection:testCell.traitCollection];
     
-    XCTAssertGreaterThan(imageHeight1, 225);
-    XCTAssertGreaterThan(imageHeight2, 225);
     
-    XCTAssertLessThan(imageHeight1, 250);
-    XCTAssertLessThan(imageHeight2, 250);
-
-
+    XCTAssertLessThanOrEqual(testCellHeight, 250, @"Cell height should be less than or equal to 250");
+    XCTAssertGreaterThanOrEqual(testCellHeight, 220, @"Cell height should be greater than or equal to 220");
+    
+    //These numbers are random.  I don't really understand what's going on here, but I know the image height is 238 with an image and 138 without.
+    
 }
+
+- (void) testThatHeightOfCellWithoutImageIsLessThanCellWith {
+    
+    MediaTableViewCell *cellWithImage = [[MediaTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellWithImage"];
+    MediaTableViewCell *cellNoImage = [[MediaTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellNoImage"];
+    
+    Media *mediaWithImage = [[Media alloc] initWithDictionary:self.sourceDictionary];
+    Media *mediaNoImage = [[Media alloc] initWithDictionary:self.sourceDictionary];
+    
+    mediaWithImage.image = [UIImage imageNamed:@"4.jpg"];
+    
+    [cellWithImage setMediaItem:mediaWithImage];
+    [cellNoImage setMediaItem:mediaNoImage];
+    
+    CGFloat heightWithImage = [MediaTableViewCell heightForMediaItem:mediaWithImage width:320 traitCollection:cellWithImage.traitCollection];
+    CGFloat heightNoImage = [MediaTableViewCell heightForMediaItem:mediaNoImage width:320 traitCollection:cellNoImage.traitCollection];
+    
+    XCTAssertLessThan(heightNoImage, heightWithImage, @"Height of cell without image should be less than cell with image");
+    
+    
+}
+
 @end

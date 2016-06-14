@@ -74,7 +74,7 @@
 		9E28EDD31CC15BD60082A2D7 /* 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpg; sourceTree = "<group>"; };
 		9E28EDD41CC15BD60082A2D7 /* 8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.jpg; sourceTree = "<group>"; };
 		9E28EDD51CC15BD60082A2D7 /* 9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9.jpg; sourceTree = "<group>"; };
-		9E28EDD61CC15BD60082A2D7 /* 10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 10.jpg; path = ../Blocstagram/10.jpg; sourceTree = "<group>"; };
+		9E28EDD61CC15BD60082A2D7 /* 10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpg; sourceTree = "<group>"; };
 		9E28EDE11CC15C170082A2D7 /* ImagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesTableViewController.h; sourceTree = "<group>"; };
 		9E28EDE21CC15C170082A2D7 /* ImagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableViewController.m; sourceTree = "<group>"; };
 		9E2E0A4A1CFD0C4D00BD8463 /* ComposeCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeCommentView.h; sourceTree = "<group>"; };
@@ -239,6 +239,7 @@
 				9E28EDD31CC15BD60082A2D7 /* 7.jpg */,
 				9E28EDD41CC15BD60082A2D7 /* 8.jpg */,
 				9E28EDD51CC15BD60082A2D7 /* 9.jpg */,
+				9E28EDD61CC15BD60082A2D7 /* 10.jpg */,
 			);
 			name = images;
 			path = Blocstagram;
@@ -248,7 +249,6 @@
 			isa = PBXGroup;
 			children = (
 				9E28EDD01CC15BD60082A2D7 /* 4.jpg */,
-				9E28EDD61CC15BD60082A2D7 /* 10.jpg */,
 				9E848E3D1D0C800E00294255 /* Info.plist */,
 				9E848E431D0C878300294255 /* UserTests.m */,
 				9E848E451D0CA9BE00294255 /* MediaTests.m */,
